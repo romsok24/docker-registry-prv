@@ -13,7 +13,7 @@ openssl req   -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key   -addext
 3. Run the main docker registry
 sudo docker run -d -e REGISTRY_HTTP_ADDR=0.0.0.0:5010 -e REGISTRY_HTTP_TLS_CERTIFICATE=/custom-repo/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/custom-repo/certs/domain.key \-p 5010:5010 --restart=always  --name ubu1804-custreg -v /custom-repo/certs:/custom-repo/certs -v /custom-repo/ubuntu-18.04/images:/var/lib/registry registry:2
 
-## Klient size:
+## Klient side:
 1. Install the preapred cert in the correct loacation so you docker cclient can use your new private registry:
 cat > /etc/docker/certs.d/myregistry.domain.com:5010/ca.crt
 2. Try to pull the images from your brand new registry
